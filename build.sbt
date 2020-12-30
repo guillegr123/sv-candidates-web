@@ -150,6 +150,10 @@ lazy val fatJarSettings = Seq(
   assemblyMergeStrategy in assembly := {
     case PathList(ps @ _*) if ps.last endsWith "io.netty.versions.properties" => MergeStrategy.first
     case PathList(ps @ _*) if ps.last endsWith "pom.properties"               => MergeStrategy.first
+    case PathList("javax", "activation", xs @ _*)                             => MergeStrategy.first
+    case PathList("com", "sun", "activation", xs @ _*)                        => MergeStrategy.first
+    case "META-INF/mailcap.default"                                           => MergeStrategy.first
+    case "META-INF/mimetypes.default"                                         => MergeStrategy.first
     case x =>
       val oldStrategy = (assemblyMergeStrategy in assembly).value
       oldStrategy(x)
