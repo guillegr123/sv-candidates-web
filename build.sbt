@@ -120,7 +120,7 @@ lazy val commonSettings = commonSmlBuildSettings ++ Seq(
   },
   copyWebapp := {
     streams.value.log.info("Copying the webapp resources")
-    IO.copyDirectory(uiDirectory.value / "build", (classDirectory in Compile).value / "webapp")
+    IO.copyDirectory(uiDirectory.value / "dist", (classDirectory in Compile).value / "webapp")
   },
   copyWebapp := copyWebapp.dependsOn(yarnTask.toTask(" build")).value
 )
