@@ -18,13 +18,6 @@ val sttpVersion = "3.0.0-RC13"
 val prometheusVersion = "0.9.0"
 val tapirVersion = "0.17.0-M8"
 
-val dbDependencies = Seq(
-  "org.tpolecat" %% "doobie-core" % doobieVersion,
-  "org.tpolecat" %% "doobie-hikari" % doobieVersion,
-  "org.tpolecat" %% "doobie-postgres" % doobieVersion,
-  "org.flywaydb" % "flyway-core" % "7.3.2"
-)
-
 val httpDependencies = Seq(
   "org.http4s" %% "http4s-dsl" % http4sVersion,
   "org.http4s" %% "http4s-blaze-server" % http4sVersion,
@@ -208,7 +201,7 @@ lazy val rootProject = (project in file("."))
 
 lazy val backend: Project = (project in file("backend"))
   .settings(
-    libraryDependencies ++= dbDependencies ++ httpDependencies ++ jsonDependencies ++ apiDocsDependencies ++ monitoringDependencies ++ dbTestingStack ++ securityDependencies ++ emailDependencies ++ catsEffectStack,
+    libraryDependencies ++= httpDependencies ++ jsonDependencies ++ apiDocsDependencies ++ monitoringDependencies ++ dbTestingStack ++ securityDependencies ++ emailDependencies ++ catsEffectStack,
     mainClass in Compile := Some("com.softwaremill.bootzooka.Main")
   )
   .enablePlugins(BuildInfoPlugin)

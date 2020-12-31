@@ -18,11 +18,7 @@ trait ConfigModule extends StrictLogging {
     val baseInfo = s"""
                    |Bootzooka configuration:
                    |-----------------------
-                   |DB:             ${config.db}
                    |API:            ${config.api}
-                   |Email:          ${config.email}
-                   |Password reset: ${config.passwordReset}
-                   |User:           ${config.user}
                    |
                    |Build & env info:
                    |-----------------
