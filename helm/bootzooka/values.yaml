@@ -1,12 +1,12 @@
-# Default values for Bootzooka.
+# Default values for Svcandidates2021.
 
 postgresql:
-  # -- Disable if you already have PostgreSQL running in cluster where Bootzooka chart is being deployed
+  # -- Disable if you already have PostgreSQL running in cluster where Svcandidates2021 chart is being deployed
   enabled: true
-  fullnameOverride: "bootzooka-pgsql-postgresql"
+  fullnameOverride: "svcandidates2021-pgsql-postgresql"
   postgresqlUsername: "postgres"
-  postgresqlPassword: "bootzooka"
-  postgresqlDatabase: "bootzooka"
+  postgresqlPassword: "svcandidates2021"
+  postgresqlDatabase: "svcandidates2021"
   service:
     port: 5432
   connectionTest:
@@ -15,9 +15,9 @@ postgresql:
       tag: 11
       pullPolicy: IfNotPresent
 
-bootzooka:
+svcandidates2021:
   replicaCount: 1
-  reset_password_url: "https://bootzooka.example.com/password-reset?code=%s"
+  reset_password_url: "https://svcandidates2021.example.com/password-reset?code=%s"
   sql:
     # -- Value will be taken from 'postgresql.fullnameOverride' setting
     host: '{{ .Values.postgresql.fullnameOverride }}'
@@ -36,11 +36,11 @@ bootzooka:
     ssl: "true"
     ssl_ver: "false"
     username: "server.example.com"
-    from: "hello@bootzooka.example.com"
-    password: "bootzooka"
+    from: "hello@svcandidates2021.example.com"
+    password: "svcandidates2021"
 
   image:
-    repository: softwaremill/bootzooka
+    repository: softwaremill/svcandidates2021
     tag: latest
     pullPolicy: Always
 
@@ -59,13 +59,13 @@ bootzooka:
       kubernetes.io/tls-acme: "true"
     hosts:
       - host:
-          domain: bootzooka.example.com
+          domain: svcandidates2021.example.com
           path: /
           port: http
     tls:
-      - secretName: bootzooka-tls
+      - secretName: svcandidates2021-tls
         hosts:
-        - bootzooka.example.com
+        - svcandidates2021.example.com
 
   resources: {}
     # We usually recommend not to specify default resources and to leave this as a conscious

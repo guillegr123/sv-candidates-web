@@ -1,21 +1,21 @@
-{{- if .Values.bootzooka.ingress.enabled }}
+{{- if .Values.svcandidates2021.ingress.enabled }}
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  name: {{ include "bootzooka.fullname" . }}-ingress
+  name: {{ include "svcandidates2021.fullname" . }}-ingress
   labels:
-    app.kubernetes.io/name: {{ include "bootzooka.name" . }}
-    helm.sh/chart: {{ include "bootzooka.chart" . }}
+    app.kubernetes.io/name: {{ include "svcandidates2021.name" . }}
+    helm.sh/chart: {{ include "svcandidates2021.chart" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
-{{- with .Values.bootzooka.ingress.annotations }}
+{{- with .Values.svcandidates2021.ingress.annotations }}
   annotations:
 {{ toYaml . | indent 4 }}
 {{- end }}
 spec:
-{{- if .Values.bootzooka.ingress.tls_enabled }}
+{{- if .Values.svcandidates2021.ingress.tls_enabled }}
   tls:
-  {{- range .Values.bootzooka.ingress.tls }}
+  {{- range .Values.svcandidates2021.ingress.tls }}
     - hosts:
       {{- range .hosts }}
         - {{ . | quote }}
@@ -24,8 +24,8 @@ spec:
   {{- end }}
 {{- end }}
   rules:
-  {{- $serviceName := include "bootzooka.fullname" . -}}
-  {{- range .Values.bootzooka.ingress.hosts }}
+  {{- $serviceName := include "svcandidates2021.fullname" . -}}
+  {{- range .Values.svcandidates2021.ingress.hosts }}
   - host: {{ .host.domain | quote }}
     http:
       paths:

@@ -1,33 +1,33 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "bootzooka.fullname" . }}
+  name: {{ include "svcandidates2021.fullname" . }}
   labels:
-    app.kubernetes.io/name: {{ include "bootzooka.name" . }}
-    helm.sh/chart: {{ include "bootzooka.chart" . }}
+    app.kubernetes.io/name: {{ include "svcandidates2021.name" . }}
+    helm.sh/chart: {{ include "svcandidates2021.chart" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
 spec:
-  replicas: {{ .Values.bootzooka.replicaCount }}
+  replicas: {{ .Values.svcandidates2021.replicaCount }}
   selector:
     matchLabels:
-      app.kubernetes.io/name: {{ include "bootzooka.name" . }}
+      app.kubernetes.io/name: {{ include "svcandidates2021.name" . }}
       app.kubernetes.io/instance: {{ .Release.Name }}
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: {{ include "bootzooka.name" . }}
+        app.kubernetes.io/name: {{ include "svcandidates2021.name" . }}
         app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
       containers:
         - name: {{ .Chart.Name }}
-          image: "{{ .Values.bootzooka.image.repository }}:{{ .Values.bootzooka.image.tag }}"
-          imagePullPolicy: {{ .Values.bootzooka.image.pullPolicy }}
+          image: "{{ .Values.svcandidates2021.image.repository }}:{{ .Values.svcandidates2021.image.tag }}"
+          imagePullPolicy: {{ .Values.svcandidates2021.image.pullPolicy }}
           envFrom:
           - configMapRef:
-              name: {{ include "bootzooka.fullname" . }}-config
+              name: {{ include "svcandidates2021.fullname" . }}-config
           - secretRef:
-              name: {{ include "bootzooka.fullname" . }}-secret
+              name: {{ include "svcandidates2021.fullname" . }}-secret
           ports:
             - name: http
               containerPort: 8080
