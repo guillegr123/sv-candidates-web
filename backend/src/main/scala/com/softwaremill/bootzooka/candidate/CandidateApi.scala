@@ -28,7 +28,7 @@ class CandidateApi(http: Http, candidateService: CandidateService) {
       .of(
         listCandidatesEndpoint
       )
-      .map(_.tag("candidatos"))
+      .map(_.tag("Candidatos"))
 }
 
 object CandidateApi {

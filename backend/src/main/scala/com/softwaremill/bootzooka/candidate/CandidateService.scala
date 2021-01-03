@@ -26,9 +26,7 @@ class CandidateService(
       .send(baseSttpBackend)
       .map(response => response.body)
       .map {
-        case Left(value) => {
-          throw value
-        }
+        case Left(ex) => throw ex
         case Right(sheetData) => sheetData.values.drop(1).takeWhile {
           case name :: _ => name != null && !name.isEmpty
           case Nil => false
